@@ -1,0 +1,197 @@
+db.products.save( {_id:"ObjectId("5b2b44f68e1bbf0d66b776c6")", item: "book", qty: 40 } )
+
+
+40453133+Jiliya@users.noreply.github.com
+
+
+
+
+
+use traial
+
+db.new123.insert({id:1,name:"jiya",age:34,bpay:340})
+db.new123.insert({id:2,name:"jilia",age:34,bpay:310})
+db.new123.insert({id:2,name:"neethu",age:37,bpay:302})
+db.new123.insert({id:2,name:"joicy",age:31,bpay:35560})
+db.new123.find().sort({age:-1})
+
+db.new12.find().sort({age: 1, bpay:1})
+
+db.new12345.insert({_id:1,name:"jia",age:24,bpay:3560,addres:[{city:"kerala"},{city2:"ekm"}]})
+db.new12345.insert({_id:2,name:"neethu",age:31,bpay:35460,addres:[{city:"kerala"},{city2:"mvtpzha"}]})
+db.new12345.insert({_id:5,name:"neethu",age:35,bpay:356890})
+db.new12345.find({address:{$exists:false}})
+
+db.new12345.find({bpay:{$in:[3560,356890]}})
+
+db.new12345.find({bpay:{$nin:[3560,356890]}})
+
+db.new12345.find({$and:[{age:{$gt:30}},{bpay:{$in:[3560,356890]}}]})
+
+//insertMany
+db.products.insertMany( [
+      { item: "card", qty: 15 },
+      { item: "envelope", qty: 20 },
+      { item: "stamps" , qty: 30 }
+   ] )
+ 
+ //upsert
+   db.products.update(
+   { item: "envelope" },
+   {
+      name: "Andy",
+      rating: 1,
+      score: 1
+   },
+   { upsert: true }
+)
+   //if a not maching row is there
+   db.products.update(
+   { item: "jia"},
+   {
+      name: "jia",
+      rating: 1,
+      score: 1
+   },
+   { upsert: true }
+)
+
+//save
+db.products.save( {_id: item: "book", qty: 40 } )//no id insert id and insert a row
+db.products.save( {_id:ObjectId("5b2b44f68e1bbf0d66b776c6"), item: "note", qty: 40 } ) //id macthing update the same row
+db.products.save( {_id:25, item: "note", qty: 40 } ) //id not matching insert a new row
+ db.products.find()
+//updateMany
+
+db.products.updateMany(
+      { qty: { $gt: 4 } },
+      { $set: { "Review" : true } }
+   )
+
+
+
+db.products.find()
+      //Findone
+db.products.findOne()
+
+
+//find with projection
+db.products.findOne(
+    { },
+    { qty: 1, Review: 1 }
+)
+    
+//findone with condition
+    
+    db.products.findOne(
+   {
+     $or: [
+            { name : /^A/},
+            { birth: { $lt:4 } }
+          ]
+   }
+)
+    
+//$slice
+   
+db.stu1.find( {}, {a:{$slice:-3}} )
+
+db.stu1.insert({b:[2,31,51,31,51]})
+//RegExp
+db.emp3.find( { name: { $regex: /^J/ } } )
+
+
+db.emp.insert({empName:"Raj"})
+db.emp3.insert({empName:"Ravi"})
+db.emp3.ensureIndex({empName:-1},{unique:true})
+
+db.emp3.insert({empName:"ram" ,des:"Pm"})
+db.emp3.insert({empName:"jia" ,des:"Pm"})
+db.emp3.insert({empName:"adhi" ,des:"Pm"})
+db.timeTable1.find()
+db.emp3.getIndexes()
+
+db.emp3.dropIndex( { empName:-1 } )
+
+db.timeTable.insert({ajhfjk:  '2007,08,07'})
+//db.timeTable.insert(DateFi:new Date()) 
+
+var myDate = new Date("2016-05-18T16:00:00Z");
+db.timeTable1.insert({dateField:new Date("2017-05-18T16:00:00Z")})
+db.timeTable1.insert({dateField:new Date("2018-07-18")})
+db.timeTable1.insert({dateField:new Date("2018-12-18")})
+db.timeTable1.insert({dateField:new Date("2018-06-18")})
+db.timeTable1.find({dateField:{$in:{"2018-06-18 00:00:00.000Z,2018-07-18 00:00:00.000Z}}})
+db.timeTable1.remove({_id:ObjectId("5b2b84f58e1bbf0d66b776df")})
+
+//new column insertion
+db.emp1.insert({_id:1,name:"jia"})
+db.emp1.insert({_id:2,name:"jomol"})
+db.emp1.insert({_id:3,name:"jo"})
+db.emp1.insert({_id:4,name:"mary"})
+db.emp1.update({"_id" :1 },{$set : {newfield:1}})
+db.emp1.find()
+//unserting if column is not there
+
+
+  db.emp1.update(
+   { _id: 1 },
+   {
+      name: "jia",
+      rating: 1,
+      score: 1
+   },
+   { upsert: true }
+   
+   
+   
+   
+   
+   
+   db.Products.find()
+   aggregate(1,1)
+)
+  
+db.emp1.update( { _id: 2},{ $unset: {name: ""}})
+
+db.products.find()
+
+ db.products.aggregate([{$group : {_id : ObjectId("5b2b44f68e1bbf0d66b776c6"), qty : {$sum : -1}}}])
+ 
+ 
+ 
+ 
+ 
+ db.productsneww.insertMany( [
+      { item: "card", qty: 15 },
+      { item: "envelope", qty: 20 },
+      { item: "stamps" , qty: 30 }
+   ] )
+      
+      db.productsneww.aggregate({$group:{_id:"$qty",total:{$sum:1}}})
+      
+  db.newemp.insert({_id:1,name:"jia",Dept:"sat",bpay:12200}) 
+  
+  db.newemp.insert({_id:2,name:"jeena",Dept:"get",bpay:100}) 
+  db.newemp.insert({_id:3,name:"jjo",Dept:"sat",bpay:123200}) 
+  db.newemp.insert({_id:4,name:"jiagg",Dept:"get",bpay:10000})
+   db.newemp.insert({_id:5,name:"jiagg",Dept:"get",bpay:10000})
+    db.newemp.insert({_id:6,name:"jiagg",Dept:"met",bpay:10000})
+     db.newemp.insert({_id:6,name:"jiagg",Dept:"met",bpay:10000})
+     db.newemp.insert({_id:7,name:"jiagg",Dept:"met",bpay:10000,location:"chennai"})
+     db.newemp.insert({_id:8,name:"aa",Dept:"get",bpay:10000,location:"mum"})
+     db.newemp.insert({_id:9,name:"bb",Dept:"met",bpay:10000,location:"chennai"})
+      db.newemp.insert({_id:8,name:"aa",Dept:"get",bpay:10000,location:"chennai"})
+     db.newemp.insert({_id:9,name:"bb",Dept:"met",bpay:10000,location:"chennai"})
+ //grupby dept and sum of sal
+ db.newemp.aggregate([{$group:{_id:"$Dept" ,total:{$sum:"$bpay"}}}])
+ db.newemp.aggregate([{$group:{_id:"$Dept" ,total:{$sum:"$bpay"}}},{$sort:{total:-1}}])
+ //simple group by
+ db.newemp.aggregate([{$newemp:{total:{$max:"$bpay"}}}])
+ 
+ 
+ db.newemp.aggregate([{$group:{_id:"$Dept" ,total:{$avg:"$bpay"}}}])
+ db.newemp.aggregate([{$group:{_id:"$Dept" ,total:{$min:"$bpay"}}}]) 
+ db.newemp.aggregate([{$group:{_id:"$Dept" ,total:{$max:"$bpay"}}}])
+ //find out the max
+  db.newemp.find({}).sort({"bpay":-1}).limit(1)
